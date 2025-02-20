@@ -1,4 +1,4 @@
-package com.example.advanced_task_manager.roles;
+package com.example.advanced_task_manager.enums;
 
 public enum Status {
     PENDING,
