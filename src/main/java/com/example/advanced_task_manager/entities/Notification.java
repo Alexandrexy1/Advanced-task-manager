@@ -16,6 +16,8 @@ public class Notification {
     @NotNull
     private final String message;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     @NotNull
     private final User receiver;
 

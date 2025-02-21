@@ -20,6 +20,10 @@ public class Team {
     @NotNull
     private final List<User> members = new ArrayList<>();
 
+    @OneToMany(mappedBy = "team")
+    @NotNull
+    private final List<Project> projects = new ArrayList<>();
+
     public Team(@NotNull  String name) {
         this.name = name;
     }
@@ -34,5 +38,9 @@ public class Team {
 
     public @NotNull List<User> getMembers() {
         return members;
+    }
+
+    public @NotNull List<Project> getProjects() {
+        return projects;
     }
 }

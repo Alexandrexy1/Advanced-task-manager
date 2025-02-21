@@ -15,15 +15,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 
-    @NotNull
-    private final String name;
-
-    @NotNull
-    private final String email;
-
-    @NotNull
-    private final String password;
+    @Column(unique = true, nullable = false)
+    private String email;
+    private String password;
 
     @Nullable
     private Role role;
@@ -37,9 +33,11 @@ public class User {
     @NotNull
     private final List<Team> teams = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     @NotNull
     private final List<Task> tasks = new ArrayList<>();
+
+
 
     public User(@NotNull String name, @NotNull String email, @NotNull String password) {
         this.name = name;
@@ -51,6 +49,10 @@ public class User {
         name = dto.name();
         email = dto.email();
         password = dto.password();
+    }
+
+    public User() {
+
     }
 
     public Long getId() {
@@ -79,5 +81,21 @@ public class User {
 
     public @NotNull List<Task> getTasks() {
         return tasks;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(@Nullable Role role) {
+        this.role = role;
     }
 }

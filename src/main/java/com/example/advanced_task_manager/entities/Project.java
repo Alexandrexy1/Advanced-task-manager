@@ -3,6 +3,7 @@ package com.example.advanced_task_manager.entities;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,16 +21,18 @@ public class Project {
     private final String description;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "team_id")
     private final Team team;
 
     @NotNull
-    private final List<Task> tasks;
+    @OneToMany(mappedBy = "project")
+    private final List<Task> tasks = new ArrayList<>();
 
     public Project(@NotNull String name, @NotNull String description, @NotNull Team team, @NotNull List<Task> tasks) {
         this.name = name;
         this.description = description;
         this.team = team;
-        this.tasks = tasks;
     }
 
     public Long getId() {

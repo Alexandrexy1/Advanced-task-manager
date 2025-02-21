@@ -1,7 +1,7 @@
 package com.example.advanced_task_manager.roles;
 
 public enum Role {
-    ADMIN,
-    MANAGER,
-    MEMBER
+    ROLE_ADMIN,
+    ROLE_MANAGER,
+    ROLE_USER
 }

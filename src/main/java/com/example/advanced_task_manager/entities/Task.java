@@ -31,17 +31,24 @@ public class Task {
     private Priority priority;
     private List<String> tags;
 
+    @OneToMany(mappedBy = "task")
     private final List<Historical> historical = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private final User user;
 
-    public Task(@NotNull String title, @NotNull String description, @NotNull Status status, @NotNull LocalDateTime deadline, User user) {
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private final Project project;
+
+    public Task(@NotNull String title, @NotNull String description, @NotNull Status status, @NotNull LocalDateTime deadline, User user, Project project) {
         this.title = title;
         this.description = description;
         this.status = status;
         this.deadline = deadline;
         this.user = user;
+        this.project = project;
     }
 
     public long getId() {
@@ -78,5 +85,9 @@ public class Task {
 
     public User getUser() {
         return user;
+    }
+
+    public Project getProject() {
+        return project;
     }
 }

@@ -12,12 +12,16 @@ public class Historical {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "task_id")
     @NotNull
     private final Task task;
 
     @NotNull
     private final String action;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     @NotNull
     private final User user;
 
