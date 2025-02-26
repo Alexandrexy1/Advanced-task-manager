@@ -37,8 +37,6 @@ public class User {
     @NotNull
     private final List<Task> tasks = new ArrayList<>();
 
-
-
     public User(@NotNull String name, @NotNull String email, @NotNull String password) {
         this.name = name;
         this.email = email;
